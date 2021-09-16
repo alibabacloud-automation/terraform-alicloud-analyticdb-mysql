@@ -59,7 +59,7 @@ If you have any problems when using this module, please opening a [provider issu
 
 Authors
 ---------
-Created and maintained by quanyun.
+Created and maintained by Alibaba Cloud Terraform Team(terraform@alibabacloud.com).
 
 License
 ----
