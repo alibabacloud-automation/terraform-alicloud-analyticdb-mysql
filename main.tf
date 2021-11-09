@@ -17,5 +17,6 @@ resource "alicloud_adb_cluster" "this" {
   db_node_storage        = var.db_node_storage
   pay_type               = var.pay_type
   vswitch_id             = var.vswitch_id
+  mode                   = var.mode
 }
 
