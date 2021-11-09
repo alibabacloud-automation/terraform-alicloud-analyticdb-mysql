@@ -92,3 +92,9 @@ variable "vswitch_id" {
   type        = string
   default     = ""
 }
+
+variable "mode" {
+  description = "The mode of the cluster.."
+  type        = string
+  default     = "flexible"
+}
