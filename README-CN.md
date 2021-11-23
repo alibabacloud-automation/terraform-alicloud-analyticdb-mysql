@@ -1,6 +1,6 @@
 Terraform module which creates ADB cluster resources on Alibaba Cloud  
 terraform-alicloud-analyticdb-mysql
-=====================================================================
+
 
 
 本 Module 用于在阿里云的 VPC 下创建一个[ADB 云数据库](https://help.aliyun.com/product/92664.html)。
@@ -9,12 +9,8 @@ terraform-alicloud-analyticdb-mysql
 
 * [ADB 数据库实例 (adb cluster)](https://www.terraform.io/docs/providers/alicloud/r/adb_cluster.html)
 
-## Terraform 版本
-
-本模版要求使用 Terraform 0.12 和阿里云 Provider 1.71.0+。
-
 ## 用法
------
+
 ### 你可以通过以下步骤增加terraform模板。
 
 增加module资源到你的模板文件，例如main.tf
@@ -22,8 +18,6 @@ terraform-alicloud-analyticdb-mysql
 ```hcl
 module "adb" {
   source               = "terraform-alicloud-modules/adb/alicloud"
-  profile              = "Your-Profile-Name"
-  region               = "cn-shenzhen"
   #################
   # ADB Cluster
   #################
@@ -44,8 +38,74 @@ module "adb" {
 * [ADB实例创建示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-analyticdb-mysql/tree/master/examples/complete)
 
 ## 注意事项
+本Module从版本v1.1.0开始已经移除掉如下的 provider 的显示设置：
 
-* 本 Module 使用的 AccessKey 和 SecretKey 可以直接从 `profile` 和 `shared_credentials_file` 中获取。如果未设置，可通过下载安装 [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) 后进行配置。
+```hcl
+provider "alicloud" {
+  profile                 = var.profile != "" ? var.profile : null
+  shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
+  region                  = var.region != "" ? var.region : null
+  skip_region_validation  = var.skip_region_validation
+  configuration_source    = "terraform-alicloud-modules/adb"
+}
+```
+
+如果你依然想在Module中使用这个 provider 配置，你可以在调用Module的时候，指定一个特定的版本，比如 1.0.0:
+
+```hcl
+module "adb" {
+  source             = "terraform-alicloud-modules/adb/alicloud"
+  version            = "1.0.0"
+  region             = "cn-shenzhen"
+  profile            = "Your-Profile-Name"
+  db_cluster_version = "3.0"
+  pay_type           = "PostPaid"
+  // ...
+}
+```
+
+如果你想对正在使用中的Module升级到 1.1.0 或者更高的版本，那么你可以在模板中显示定义一个系统过Region的provider：
+```hcl
+provider "alicloud" {
+  region  = "cn-shenzhen"
+  profile = "Your-Profile-Name"
+}
+module "adb" {
+  source             = "terraform-alicloud-modules/adb/alicloud"
+  db_cluster_version = "3.0"
+  pay_type           = "PostPaid"
+  // ...
+}
+```
+或者，如果你是多Region部署，你可以利用 `alias` 定义多个 provider，并在Module中显示指定这个provider：
+
+```hcl
+provider "alicloud" {
+  region  = "cn-shenzhen"
+  profile = "Your-Profile-Name"
+  alias   = "sz"
+}
+module "adb" {
+  source             = "terraform-alicloud-modules/adb/alicloud"
+  providers          = {
+    alicloud = alicloud.sz
+  }
+  db_cluster_version = "3.0"
+  pay_type           = "PostPaid"
+  // ...
+}
+```
+
+定义完provider之后，运行命令 `terraform init` 和 `terraform apply` 来让这个provider生效即可。
+
+更多provider的使用细节，请移步[How to use provider in the module](https://www.terraform.io/docs/language/modules/develop/providers.html#passing-providers-explicitly)
+
+## Terraform 版本
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.0 |
+| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | >= 1.71.0 |
 
 提交问题
 -------
@@ -55,7 +115,7 @@ module "adb" {
 
 作者
 -------
-Created and maintained by quanyun.
+Created and maintained by Alibaba Cloud Terraform Team(terraform@alibabacloud.com)
 
 许可
 ----
