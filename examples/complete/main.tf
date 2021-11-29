@@ -26,15 +26,16 @@ data "alicloud_vswitches" "default" {
 }
 
 module "adb_example" {
-  source                 = "../.."
-  region                 = var.region
-  description            = "tf-module-adb-cluster-example"
-  db_cluster_version     = "3.0"
-  db_cluster_category    = "Cluster"
-  db_node_class          = "C8"
-  db_node_count          = 2
-  db_node_storage        = 200
-  pay_type               = "PostPaid"
-  vswitch_id             = data.alicloud_vswitches.default.ids.0
-  availability_zone      = data.alicloud_zones.default.zones.0.id
+  source              = "../.."
+  region              = var.region
+  description         = "tf-module-adb-cluster-example"
+  db_cluster_version  = "3.0"
+  db_cluster_category = "Cluster"
+  db_node_class       = "C8"
+  db_node_count       = 2
+  db_node_storage     = 200
+  pay_type            = "PostPaid"
+  mode                = "reserver"
+  vswitch_id          = data.alicloud_vswitches.default.ids.0
+  availability_zone   = data.alicloud_zones.default.zones.0.id
 }
