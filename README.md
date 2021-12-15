@@ -20,7 +20,7 @@ Adding a module resource to your template, e.g. main.tf
 
 ```hcl
 module "adb" {
-  source               = "terraform-alicloud-modules/adb/alicloud"
+  source               = "terraform-alicloud-modules/analyticdb-mysql/alicloud"
   #################
   # ADB Cluster
   #################
@@ -49,7 +49,7 @@ provider "alicloud" {
   shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
   region                  = var.region != "" ? var.region : null
   skip_region_validation  = var.skip_region_validation
-  configuration_source    = "terraform-alicloud-modules/adb"
+  configuration_source    = "terraform-alicloud-modules/analyticdb-mysql"
 }
 ```
 
@@ -57,7 +57,7 @@ If you still want to use the `provider` setting to apply this module, you can sp
 
 ```hcl
 module "adb" {
-  source             = "terraform-alicloud-modules/adb/alicloud"
+  source             = "terraform-alicloud-modules/analyticdb-mysql/alicloud"
   version            = "1.0.0"
   region             = "cn-shenzhen"
   profile            = "Your-Profile-Name"
@@ -76,7 +76,7 @@ provider "alicloud" {
   profile = "Your-Profile-Name"
 }
 module "adb" {
-  source             = "terraform-alicloud-modules/adb/alicloud"
+  source             = "terraform-alicloud-modules/analyticdb-mysql/alicloud"
   db_cluster_version = "3.0"
   pay_type           = "PostPaid"
   // ...
@@ -91,7 +91,7 @@ provider "alicloud" {
   alias   = "sz"
 }
 module "adb" {
-  source             = "terraform-alicloud-modules/adb/alicloud"
+  source             = "terraform-alicloud-modules/analyticdb-mysql/alicloud"
   providers          = {
     alicloud = alicloud.sz
   }
