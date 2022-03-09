@@ -1,6 +1,4 @@
-#################
 # ADB Cluster
-#################
 output "this_adb_cluster_id" {
   description = "The ID of the ADB cluster."
   value       = module.adb_example.this_adb_cluster_id

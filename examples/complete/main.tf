@@ -1,41 +1,26 @@
-variable "region" {
-  default = "cn-shenzhen"
-}
-
-variable "profile" {
-  default = "default"
-}
-
-provider "alicloud" {
-  region  = var.region
-  profile = var.profile
-}
-
-data "alicloud_zones" "default" {
-  available_resource_creation = "ADB"
-  enable_details              = true
-}
-
 data "alicloud_vpcs" "default" {
-  is_default = true
+  name_regex = "default-NODELETING"
 }
 
 data "alicloud_vswitches" "default" {
-  vpc_id  = data.alicloud_vpcs.default.ids.0
-  zone_id = data.alicloud_zones.default.zones.0.id
+  name_regex = "default-zone-g"
+  vpc_id     = data.alicloud_vpcs.default.vpcs.0.id
 }
 
 module "adb_example" {
-  source              = "../.."
-  region              = var.region
-  description         = "tf-module-adb-cluster-example"
+  source = "../.."
+
+  create_cluster = true
+
+  vswitch_id          = data.alicloud_vswitches.default.vswitches.0.id
+  availability_zone   = data.alicloud_vswitches.default.vswitches.0.zone_id
   db_cluster_version  = "3.0"
   db_cluster_category = "Cluster"
   db_node_class       = "C8"
   db_node_count       = 2
-  db_node_storage     = 200
-  pay_type            = "PostPaid"
+  db_node_storage     = var.db_node_storage
   mode                = "reserver"
-  vswitch_id          = data.alicloud_vswitches.default.ids.0
-  availability_zone   = data.alicloud_zones.default.zones.0.id
+  pay_type            = "PostPaid"
+  description         = var.description
+
 }
