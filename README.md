@@ -1,7 +1,6 @@
 Terraform module which creates a ADB cluster on Alibaba Cloud.  
 terraform-alicloud-analyticdb-mysql
 
-
 English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-analyticdb-mysql/blob/master/README-CN.md)
 
 Terraform module which creates ADB cluster resources on Alibaba Cloud
@@ -109,7 +108,7 @@ More details see [How to use provider in the module](https://www.terraform.io/do
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
 | <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | >= 1.71.0 |
 
 Submit Issues

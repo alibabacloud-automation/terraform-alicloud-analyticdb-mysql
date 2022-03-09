@@ -1,6 +1,4 @@
-#################
 # Provider
-#################
 variable "profile" {
   description = "(Deprecated from version 1.1.0) The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable."
   type        = string
@@ -25,30 +23,29 @@ variable "skip_region_validation" {
   default     = false
 }
 
-##############################################################
 # ADB Cluster
-##############################################################
-variable "existing_cluster_id" {
-  description = "The Id of an existing ADB cluster. If set, the 'create_cluster' will be ignored."
-  default     = ""
-}
-
 variable "create_cluster" {
   description = "Whether to create ADB cluster. If false, you can use a existing ADB cluster by setting 'existing_cluster_id'."
   type        = bool
-  default     = true
+  default     = false
+}
+
+variable "existing_cluster_id" {
+  description = "The Id of an existing ADB cluster. It will be ignored when create_cluster = true."
+  type        = string
+  default     = ""
+}
+
+variable "vswitch_id" {
+  description = "VSwitch variables, if vswitch_id is empty, then the net_type = classic."
+  type        = string
+  default     = ""
 }
 
 variable "availability_zone" {
   description = "The available zone to launch ADB cluster."
   type        = string
   default     = ""
-}
-
-variable "description" {
-  description = "Display name of the cluster, [2, 128] English or Chinese characters, must start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'."
-  type        = string
-  default     = "tf-module-adb"
 }
 
 variable "db_cluster_version" {
@@ -64,7 +61,7 @@ variable "db_cluster_category" {
 }
 
 variable "db_node_class" {
-  description = "The node class of the cluster instance type. Valid value: C8, C24 and so on."
+  description = "The node class of the cluster instance type. Valid value: C8, C32 and so on."
   type        = string
   default     = "C8"
 }
@@ -81,20 +78,20 @@ variable "db_node_storage" {
   default     = 100
 }
 
+variable "mode" {
+  description = " The mode of the cluster. Valid values: reserver, flexible."
+  type        = string
+  default     = "reserver"
+}
+
 variable "pay_type" {
   description = "pay type, Valid value:Prepaid: The subscription billing method is used, Postpaid: The pay-as-you-go billing method is used."
   type        = string
   default     = "PostPaid"
 }
 
-variable "vswitch_id" {
-  description = "VSwitch variables, if vswitch_id is empty, then the net_type = classic."
+variable "description" {
+  description = "Display name of the cluster, [2, 128] English or Chinese characters, must start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'."
   type        = string
   default     = ""
-}
-
-variable "mode" {
-  description = " The mode of the cluster. Valid values: reserver, flexible."
-  type        = string
-  default     = "reserver"
 }
