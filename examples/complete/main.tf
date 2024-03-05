@@ -1,10 +1,17 @@
+provider "alicloud" {
+  region = "ap-southeast-1"
+}
+
+data "alicloud_adb_zones" "default" {
+}
+
 data "alicloud_vpcs" "default" {
   name_regex = "default-NODELETING"
 }
 
 data "alicloud_vswitches" "default" {
-  name_regex = "default-zone-g"
-  vpc_id     = data.alicloud_vpcs.default.vpcs.0.id
+  vpc_id  = data.alicloud_vpcs.default.vpcs.0.id
+  zone_id = data.alicloud_adb_zones.default.ids.0
 }
 
 module "adb_example" {
@@ -22,5 +29,4 @@ module "adb_example" {
   mode                = "reserver"
   pay_type            = "PostPaid"
   description         = var.description
-
 }
