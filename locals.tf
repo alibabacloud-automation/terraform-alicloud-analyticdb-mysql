@@ -1,4 +1,4 @@
 locals {
   # Get ID of ADB cluster
-  this_cluster_id = var.existing_cluster_id != "" ? var.existing_cluster_id : concat(alicloud_adb_cluster.this.*.id, [""])[0]
+  this_cluster_id = var.create_cluster ? alicloud_adb_db_cluster.this[0].id : var.existing_cluster_id
 }
