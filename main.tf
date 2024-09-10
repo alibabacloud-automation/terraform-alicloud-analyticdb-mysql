@@ -1,4 +1,4 @@
-resource "alicloud_adb_cluster" "this" {
+resource "alicloud_adb_db_cluster" "this" {
   count               = var.create_cluster ? 1 : 0
   vswitch_id          = var.vswitch_id
   zone_id             = var.availability_zone
@@ -8,6 +8,6 @@ resource "alicloud_adb_cluster" "this" {
   db_node_count       = var.db_node_count
   db_node_storage     = var.db_node_storage
   mode                = var.mode
-  pay_type            = var.pay_type
+  payment_type        = var.payment_type
   description         = var.description
 }

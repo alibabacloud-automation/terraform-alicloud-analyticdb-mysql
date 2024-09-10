@@ -1,51 +1,26 @@
-# Provider
-variable "profile" {
-  description = "(Deprecated from version 1.1.0) The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable."
-  type        = string
-  default     = ""
-}
-
-variable "shared_credentials_file" {
-  description = "(Deprecated from version 1.1.0) This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used."
-  type        = string
-  default     = ""
-}
-
-variable "region" {
-  description = "(Deprecated from version 1.1.0) The region used to launch this module resources."
-  type        = string
-  default     = ""
-}
-
-variable "skip_region_validation" {
-  description = "(Deprecated from version 1.1.0) Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet)."
-  type        = bool
-  default     = false
-}
-
 # ADB Cluster
 variable "create_cluster" {
   description = "Whether to create ADB cluster. If false, you can use a existing ADB cluster by setting 'existing_cluster_id'."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "existing_cluster_id" {
   description = "The Id of an existing ADB cluster. It will be ignored when create_cluster = true."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "vswitch_id" {
   description = "VSwitch variables, if vswitch_id is empty, then the net_type = classic."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "availability_zone" {
   description = "The available zone to launch ADB cluster."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "db_cluster_version" {
@@ -81,17 +56,17 @@ variable "db_node_storage" {
 variable "mode" {
   description = " The mode of the cluster. Valid values: reserver, flexible."
   type        = string
-  default     = "reserver"
+  default     = null
 }
 
-variable "pay_type" {
-  description = "pay type, Valid value:Prepaid: The subscription billing method is used, Postpaid: The pay-as-you-go billing method is used."
+variable "payment_type" {
+  description = "The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`"
   type        = string
-  default     = "PostPaid"
+  default     = null
 }
 
 variable "description" {
   description = "Display name of the cluster, [2, 128] English or Chinese characters, must start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'."
   type        = string
-  default     = ""
+  default     = null
 }
