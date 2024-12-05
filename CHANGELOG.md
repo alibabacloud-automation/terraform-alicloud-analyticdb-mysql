@@ -1,4 +1,8 @@
-## 1.3.0 (Unreleased)
+## 1.4.0 (Unreleased)
+## 1.3.0 (December 05, 2024)
+
+- examples: improve the examples [GH-8](https://github.com/alibabacloud-automation/terraform-alicloud-analyticdb-mysql/pull/8/files)
+
 ## 1.2.0 (September 10, 2024)
 
 - module: support alicloud_adb_db_cluster instead of alicloud_adb_cluster [GH-7](https://github.com/alibabacloud-automation/terraform-alicloud-analyticdb-mysql/pull/7)
