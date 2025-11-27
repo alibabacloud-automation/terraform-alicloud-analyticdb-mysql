@@ -1,4 +1,5 @@
 Terraform module which creates ADB cluster resources on Alibaba Cloud  
+
 terraform-alicloud-analyticdb-mysql
 
 本 Module 用于在阿里云的 VPC 下创建一个[ADB 云数据库](https://help.aliyun.com/product/92664.html)。
@@ -8,6 +9,12 @@ terraform-alicloud-analyticdb-mysql
 * [ADB 数据库实例 (adb cluster)](https://www.terraform.io/docs/providers/alicloud/r/adb_cluster.html)
 
 ## 用法
+
+<div style="display: block;margin-bottom: 40px;"><div class="oics-button" style="float: right;position: absolute;margin-bottom: 10px;">
+  <a href="https://api.aliyun.com/terraform?source=Module&activeTab=document&sourcePath=terraform-alicloud-modules%3A%3Aanalyticdb-mysql&spm=docs.m.terraform-alicloud-modules.analyticdb-mysql" target="_blank">
+    <img alt="Open in AliCloud" src="https://img.alicdn.com/imgextra/i1/O1CN01hjjqXv1uYUlY56FyX_!!6000000006049-55-tps-254-36.svg" style="max-height: 44px; max-width: 100%;">
+  </a>
+</div></div>
 
 ### 你可以通过以下步骤增加terraform模板。
 

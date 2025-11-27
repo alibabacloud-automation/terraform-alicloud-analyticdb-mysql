@@ -1,4 +1,5 @@
 Terraform module which creates a ADB cluster on Alibaba Cloud.  
+
 terraform-alicloud-analyticdb-mysql
 
 English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-analyticdb-mysql/blob/master/README-CN.md)
@@ -12,6 +13,12 @@ These types of resources are supported:
 ----------------------
 
 ## Usage
+
+<div style="display: block;margin-bottom: 40px;"><div class="oics-button" style="float: right;position: absolute;margin-bottom: 10px;">
+  <a href="https://api.aliyun.com/terraform?source=Module&activeTab=document&sourcePath=terraform-alicloud-modules%3A%3Aanalyticdb-mysql&spm=docs.m.terraform-alicloud-modules.analyticdb-mysql&intl_lang=EN_US" target="_blank">
+    <img alt="Open in AliCloud" src="https://img.alicdn.com/imgextra/i1/O1CN01hjjqXv1uYUlY56FyX_!!6000000006049-55-tps-254-36.svg" style="max-height: 44px; max-width: 100%;">
+  </a>
+</div></div>
 
 ### You can use this in your terraform template with the following steps.
 
