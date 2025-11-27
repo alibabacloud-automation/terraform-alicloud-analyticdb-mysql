@@ -1,3 +1,5 @@
+## [1.3.1](https://github.com/alibabacloud-automation/terraform-alicloud-analyticdb-mysql/compare/v1.3.0...v1.3.1) (2025-11-27)
+
 ## 1.4.0 (Unreleased)
 ## 1.3.0 (December 05, 2024)
 
@@ -16,4 +18,3 @@ IMPROVEMENTS:
 ## 1.0.0 (April 2, 2020)
 
 - **NEW:** `adb` [GH-1](https://github.com/terraform-alicloud-modules/terraform-alicloud-analyticdb-mysql/pull/1)
-
