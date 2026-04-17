@@ -1,3 +1,14 @@
+## [2.0.0](https://github.com/alibabacloud-automation/terraform-alicloud-analyticdb-mysql/compare/v1.3.1...v2.0.0) (2026-04-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* add provider version constraint for aliyun/alicloud
+
+### Features
+
+* add provider version constraint for aliyun/alicloud ([114cee7](https://github.com/alibabacloud-automation/terraform-alicloud-analyticdb-mysql/commit/114cee7b796f65554a0009e2521d8d5ae36939f8))
+
 ## [1.3.1](https://github.com/alibabacloud-automation/terraform-alicloud-analyticdb-mysql/compare/v1.3.0...v1.3.1) (2025-11-27)
 
 ## 1.4.0 (Unreleased)
